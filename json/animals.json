@@ -1,0 +1,15 @@
+{
+  "total": 103.15,
+  "details": [
+    {
+      "name": "Dog food",
+      "date": "02.01.2020",
+      "price": 73.00
+    },
+    {
+      "name": "Cat food",
+      "date": "02.01.2020",
+      "price": 30.15
+    }
+  ]
+}

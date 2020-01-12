@@ -1,0 +1,11 @@
+<ng-container *ngIf="ringoValues; else loading">
+  <div *ngIf="ringoValues.length === 0">
+    No values :(
+  </div>
+  <div *ngFor="let ringoValue of ringoValues">
+    <b>{{ ringoValue.name }}: {{ ringoValue.value }}</b>
+  </div>
+</ng-container>
+<ng-template #loading>
+  loading...
+</ng-template>

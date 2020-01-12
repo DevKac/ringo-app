@@ -1,0 +1,25 @@
+{
+  "total": 233.95,
+  "details": [
+    {
+      "name": "Whisky",
+      "date": "02.01.2020",
+      "price": 63.45
+    },
+    {
+      "name": "Rum",
+      "date": "05.01.2020",
+      "price": 100.00
+    },
+    {
+      "name": "Cola",
+      "date": "07.01.2020",
+      "price": 10.50
+    },
+    {
+      "name": "Water",
+      "date": "08.01.2020",
+      "price": 60.00
+    }
+  ]
+}

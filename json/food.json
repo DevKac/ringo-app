@@ -1,0 +1,20 @@
+{
+  "total": 974.45,
+  "details": [
+    {
+      "name": "Burger King",
+      "date": "02.01.2020",
+      "price": 14.45
+    },
+    {
+      "name": "Chinese Food",
+      "date": "03.01.2020",
+      "price": 20.00
+    },
+    {
+      "name": "Others",
+      "date": "04.01.2020",
+      "price": 940.00
+    }
+  ]
+}

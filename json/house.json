@@ -1,0 +1,25 @@
+{
+  "total": 1137.56,
+  "details": [
+    {
+      "name": "Rent",
+      "date": "02.01.2020",
+      "price": 900.00
+    },
+    {
+      "name": "Water",
+      "date": "02.01.2020",
+      "price": 100.00
+    },
+    {
+      "name": "Electricity",
+      "date": "02.01.2020",
+      "price": 100.00
+    },
+    {
+      "name": "UPC",
+      "date": "02.01.2020",
+      "price": 37.56
+    }
+  ]
+}
