@@ -4,10 +4,11 @@
   "description": "to be done",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "install-packages": "npm install && cd ./public/ringo-app && npm install",
+    "start-server": "cd ./public/ringo-app && npm run build && cd ../../ && node server.js",
+    "start-app": "cd ./public/ringo-app && npm start"
   },
-  "author": "",
+  "author": "DevKac",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

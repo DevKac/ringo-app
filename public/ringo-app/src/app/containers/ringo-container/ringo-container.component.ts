@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 import { Subject, BehaviorSubject } from 'rxjs';
 import { takeUntil, debounceTime } from 'rxjs/operators';
@@ -12,21 +12,24 @@ import { DrinkService } from 'src/app/services/drink.service';
 import { FoodService } from 'src/app/services/food.service';
 import { HouseService } from 'src/app/services/house.service';
 import { MovieService } from 'src/app/services/movie.service';
-import { RingoComponent } from 'src/app/components/ringo/ringo.component';
+import { RingoConfig } from 'src/app/interfaces/ringo-config.interface';
+import { Color } from 'src/app/enums/color.enum';
 
 @Component({
   selector: 'app-ringo-container',
   templateUrl: './ringo-container.component.html',
-  styleUrls: ['./ringo-container.component.scss']
+  styleUrls: ['./ringo-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RingoContainerComponent implements OnInit, OnDestroy {
-  public ringoValues: Expense[];
+  public displayedRingoValues: Expense[];
+  public ringoConfig: RingoConfig;
+  private ringoValues: Expense[];
   private destroy$: Subject<boolean> = new Subject<boolean>();
   private ringoValuesChanged$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  @ViewChild(RingoComponent, {static: false})
-  private ringoComponent: RingoComponent;
 
   constructor(
+    private changeDetector: ChangeDetectorRef,
     private animalService: AnimalService,
     private drinkService: DrinkService,
     private foodService: FoodService,
@@ -35,16 +38,21 @@ export class RingoContainerComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    // @TODO: do pobrania z serwera?
+    this.ringoConfig = {
+      colors: [Color.RED, Color.AQUA, Color.ORANGE, Color.PURPLE, Color.OLIVE],
+      ringoWidth: 300,
+      ringoHeight: 300,
+      ringoHoleSize: 0.5,
+    }
     this.ringoValuesChanged$
       .pipe(takeUntil(this.destroy$), debounceTime(ringoWaitTime))
       .subscribe((valueChanged: boolean) => {
-        if (!this.ringoComponent) {
-          return;
-        }
         if (!this.ringoValues) {
           this.ringoValues = [];
         }
-        this.ringoComponent.ringoValues = this.ringoValues;
+        this.displayedRingoValues = Object.assign([], this.ringoValues);
+        this.changeDetector.detectChanges();
     });
     this.animalService.fetchAnimalsTable()
     .pipe(takeUntil(this.destroy$))
